@@ -1,0 +1,90 @@
+.example-button-toggle-label {
+    display: inline-block;
+    margin: 16px;
+  }
+  .roundlabelgreen{
+    background-color: #2CFF5D;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+  }
+  .roundlabelred{
+  
+      background-color: red;
+  
+      border-radius: 50%;
+  
+      height: 15px;
+  
+      width: 15px;
+  
+      display: inline-block;
+  
+  }
+  
+  .roundlabelyellow{
+  
+      background-color:yellow;
+  
+      border-radius: 50%;
+  
+      height: 15px;
+  
+      width: 15px;
+  
+      display: inline-block;
+  
+  }
+  
+  .roundlabelgrey{
+  
+      background-color:grey;
+  
+      border-radius: 50%;
+  
+      height: 15px;
+  
+      width: 15px;
+  
+      display: inline-block;
+  
+  }
+  .example-container {
+    height: 680px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }  
+
+  .logo{
+    width: 110px;
+    
+  }
+  /* td{
+    text-align: center;
+  }*/
+  .aligncenter{
+    padding: 20px;
+  } 
+  .state{
+    width: 300px;
+    padding-right: 20px;
+    margin-right: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .state-class{
+    float: right;
+    margin: 10px;
+    padding-right: 40px;
+  }
+
+  .showme {
+    display: none;
+  }
+  
+  .showhim:hover .showme {
+    display: block;
+  }

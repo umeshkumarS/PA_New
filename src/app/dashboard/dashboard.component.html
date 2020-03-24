@@ -1,0 +1,161 @@
+
+<div class="header">
+    <img class="logo" src="assets/images/Coats_Logo_Active.png">
+    <div class="state-class">
+      <img class="logo" src="assets/images/1.jpg" class="state">
+      <img class="logo" src="assets/images/2.jpg" class="state">
+      <img class="logo" src="assets/images/3.jpg" class="state">
+      <img class="logo" src="assets/images/4.jpg" class="state">
+    </div>
+  </div>
+  
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- <button class="btn btn-primary" style="float:right;size:45px" type="file">Upload Base</button> -->
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span (click)='get_status({"cmd_id":"get_status_data"})'> Status </span>
+           </ng-template>
+  
+  
+          <div class="example-container mat-elevation-z8" id="container">
+  
+                  <table mat-table [dataSource]="dataSource_status">
+  
+                    <ng-container *ngFor="let disCol of displayedColumns_status; let colIndex = index" matColumnDef="{{disCol}}">
+                    
+                      <th mat-header-cell *matHeaderCellDef class="header aligncenter">{{disCol}}
+                      </th>
+                      <td *matCellDef="let element"  class="aligncenter" style="z-index: 2 !important;">
+                     
+                          <span class="roundlabelgreen" *ngIf="element[disCol] == '1'"></span>
+                          <!-- <div>Hover
+                            <span class="only-show-on-hover">you see me on hovering the div next to me</span> -->
+                           
+                              <span class="showhim"> <span class="roundlabelred"  *ngIf="element[disCol] == '0'" title="Base: {{element['Value']['Base']}} , Current:  {{element['Value']['Current']}}"></span>
+                                <!-- <span class="showme">
+                                  <p>Base Value: {{element['Value']['Base']}} </p>
+                                  <p>Current Value: {{element['Value']['Current']}} </p>
+  
+                                </span> -->
+                              </span>
+                            
+                          <!-- <span class="roundlabelyellow" *ngIf="element[disCol] == '1'" title="In Progress"></span> -->
+                          <!-- <span class="roundlabelgrey" *ngIf="element[disCol] == $0" title="Null"></span> -->
+                        <span *ngIf="[0, 1].indexOf(element[disCol]) == -1" ><b>{{element[disCol]}}</b></span>
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns_status; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns_status;"></tr>
+  
+  
+                  </table>
+  
+                  <!-- <mat-paginator #paginator_status [pageSizeOptions]="[10,15,20]" id="p1" showFirstLastButtons></mat-paginator> -->
+                </div>
+  
+  
+  
+  
+  
+  
+  
+  
+        </mat-tab>
+        <mat-tab label="Size"> 
+          
+            <ng-template mat-tab-label>
+                <span (click)='get_size({"cmd_id":"get_size_data"})'> Size </span>
+               </ng-template>
+      
+      
+              <div class="example-container mat-elevation-z8" id="container">
+      
+                      <table mat-table [dataSource]="dataSource_size">
+      
+                        <ng-container *ngFor="let disCol of displayedColumns_size; let colIndex = index" matColumnDef="{{disCol}}">
+                        
+                          <th mat-header-cell *matHeaderCellDef class="header aligncenter">{{disCol}}
+                          </th>
+                          <td *matCellDef="let element"  class="aligncenter" style="z-index: 2 !important;">
+                         
+                              <span class="roundlabelgreen" *ngIf="element[disCol] == '1'" ></span>
+                      
+                              <span class="roundlabelred" *ngIf="element[disCol] == '0'" title="Base: {{element['Value']['Base']}} , Current:  {{element['Value']['Current']}}"></span>
+                              <!-- <span class="roundlabelyellow" *ngIf="element[disCol] == '1'" title="In Progress"></span> -->
+                              <!-- <span class="roundlabelgrey" *ngIf="element[disCol] == $0" title="Null"></span> -->
+                            <span *ngIf="[0, 1].indexOf(element[disCol]) == -1" ><b>{{element[disCol]}}</b></span>
+                          </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns_size; sticky: true"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns_size;"></tr>
+      
+      
+                      </table>
+      
+                      <!-- <mat-paginator #paginator_size [pageSizeOptions]="[10,15,20]" id="p2" showFirstLastButtons></mat-paginator> -->
+                    </div>
+        
+        </mat-tab>
+        <mat-tab label="Complete Delta"> 
+          
+          <ng-template mat-tab-label>
+              <span (click)='get_complete_delta({"cmd_id":"get_cd_data"})'> Complete Delta </span>
+             </ng-template>
+    
+    
+            <div class="example-container mat-elevation-z8" id="container">
+    
+                    <table mat-table [dataSource]="dataSource_delta">
+    
+                      <ng-container *ngFor="let disCol of displayedColumns_delta; let colIndex = index" matColumnDef="{{disCol}}">
+                      
+                        <th mat-header-cell *matHeaderCellDef class="header aligncenter">{{disCol}}
+                        </th>
+                        <td *matCellDef="let element"  class="aligncenter" style="z-index: 2 !important;">
+                          <!-- <h2>{{}}</h2> -->
+                          <div *ngIf="disCol!='Private IP'">
+                            
+                           <span class="roundlabelgreen" *ngIf="element['Status'][disCol]['Value'] == '0'" ></span>
+                           <span  style="background-color: tomato;" *ngIf="element['Status'][disCol]['Value'] == 'b'" >{{element['Status'][disCol]['Values']}}</span>
+                           <span style="background-color: paleturquoise;" *ngIf="element['Status'][disCol]['Value'] == 'c'" >{{element['Status'][disCol]['Values']}}</span>
+                           
+                              </div>
+                            <!-- <span class="roundlabelgreen" *ngIf="element.Status[disCol[Value]] == '0'" title="Completed"></span> -->
+                            
+                            <!-- <span class="roundlabelred" *ngIf="element.Status[disCol[Value]] == '1'" title="Completed"></span> -->
+                            <!-- <span *ngIf="[0,1].indexOf(element['Status'][disCol]['Value']) == -1" ><b>{{element[disCol]}}</b></span>
+                           
+                           <div>
+                            <span *ngIf="[0,1].indexOf(element.Status[disCol]) == -1" ><b>{{element.Status[disCol]}}</b></span>
+                          </div> -->
+                         
+                        <span class="roundlabelred" *ngIf="element['Status'][disCol]['Value'] == '1'" title="Base: {{element['Status'][disCol]['Values']['Base']}}, Current: {{element['Status'][disCol]['Values']['Current']}}"></span>
+                        <span *ngIf="[0, 1].indexOf(element[disCol]) == -1">{{element[disCol]}}</span>
+                        </td>
+                            <!-- <span class="roundlabelred" *ngIf="element[disCol] == '0'" title="Failed"></span>
+                            <span class="roundlabelgrey" *ngIf="element[disCol] == $0" title="Null"></span> -->
+                          <!-- <span *ngIf="[0, 1].indexOf(element[disCol]) == -1" ><b>{{element[disCol]}}</b></span>
+                        </td> -->
+                      </ng-container>
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns_delta; sticky: true"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns_delta;"></tr>
+    
+    
+                    </table>
+    
+                    <!-- <mat-paginator #paginator_delta [pageSizeOptions]="[10,15,20]" id="p3" showFirstLastButtons></mat-paginator> -->
+                  </div>
+      
+      </mat-tab>
+      <mat-tab label="Upload Base">
+          <div class="input-group" >
+                <input type="file" style="margin-top:30px" (change)="onFileSelected($event)">
+                <button class="btn btn-outline-secondary" type="button" style="margin-top:20px" (click)="onUpload()">Upload</button>
+            </div>  
+      </mat-tab>
+      </mat-tab-group>
+    </div>
+  </nav>
+  
